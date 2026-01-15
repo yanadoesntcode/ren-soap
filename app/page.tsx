@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { connectToDatabase } from "@/src/lib/mongodb";
+import { Navigation } from "./components/Navigation";
+import { ProductCard } from "./components/ProductCard";
 
 export default async function Home() {
   let products: any[] = [];
@@ -26,37 +28,7 @@ export default async function Home() {
   }
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#FDFDFD] font-sans">
-            {/* Navigation Bar */}
-            <nav className="flex items-center justify-between px-8 py-4 bg-[#1F2937] text-[#FDFDFD]">
-          <Image 
-          height={40}
-          width={120}
-          src={"/images/nav-logo.svg"} 
-          alt="Ren Logo"
-          className="mx-10 ml-1"/>
-          <ul className="flex space-x-6">
-            <li>
-              <a href="#" className="hover:text-[#FCD34D]">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-[#FCD34D]">
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-[#FCD34D]">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-[#FCD34D]">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <Navigation />
     
     {/* Hero Section */}
     <header className="relative w-full bg-[#6B8773] text-center">
@@ -89,28 +61,8 @@ export default async function Home() {
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {products.length > 0 ? (
-            products.map((product: any) => (
-              <div
-                key={product.id}
-                className="flex flex-col items-center bg-[#FDFDFD] p-6 shadow-md border border-[#E5E7EB]"
-              >
-                <Image
-                  src={`/soap${products.indexOf(product) + 1}.jpg`}
-                  alt={product.name}
-                  width={150}
-                  height={150}
-                  className="rounded-md"
-                />
-                <h3 className="mt-4 text-xl font-medium text-[#1F2937]">
-                  {product.name}
-                </h3>
-                <p className="mt-2 text-[#4B5563]">
-                  {product.description}
-                </p>
-                <span className="mt-4 text-lg font-bold text-[#C084FC]">
-                  ${product.price.toFixed(2)}
-                </span>
-              </div>
+            products.map((product, index) => (
+              <ProductCard key={product.id} product={product} index={index} />
             ))
           ) : (
             <p className="text-center text-[#4B5563]">No products available</p>

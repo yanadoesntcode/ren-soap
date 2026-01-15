@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Outfit } from "next/font/google";
+import { CartProvider } from "@/src/context/CartContext";
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={outfit.className}>
-      <body>{children}</body>
+      <body>
+        <CartProvider>
+          {children}
+        </CartProvider>
+      </body>
     </html>
   )
 }
