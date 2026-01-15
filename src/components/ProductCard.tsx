@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "@/src/context/CartContext";
 
 interface Product {
@@ -18,7 +19,9 @@ interface ProductCardProps {
 export function ProductCard({ product, index }: ProductCardProps) {
   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     addToCart({
       id: product.id,
       name: product.name,
@@ -29,7 +32,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
   };
 
   return (
-    <div className="flex flex-col items-center bg-[#FDFDFD] p-6 shadow-md border border-[#E5E7EB]">
+    <Link 
+      href={`/product/${product.id}`}
+      className="flex flex-col items-center bg-[#FDFDFD] p-6 shadow-md border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+    >
       <Image
         src={`/soap${index + 1}.jpg`}
         alt={product.name}
@@ -48,10 +54,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
       </span>
       <button
         onClick={handleAddToCart}
-        className="mt-4 rounded-full bg-[#1F2937] px-6 py-2 text-[#FDFDFD] hover:bg-[#111827] transition"
+        className="mt-4 rounded-full bg-[#1F2937] px-6 py-2 text-[#FDFDFD] hover:bg-[#111827] transition z-10"
       >
         Add to Cart
       </button>
-    </div>
+    </Link>
   );
 }

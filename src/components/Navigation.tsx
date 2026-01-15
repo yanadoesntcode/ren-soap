@@ -77,7 +77,7 @@ export function Navigation() {
                         <ul className="space-y-2">
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/all-soaps"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               All Soaps
@@ -85,7 +85,7 @@ export function Navigation() {
                           </li>
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/bestsellers"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Bestsellers
@@ -93,7 +93,7 @@ export function Navigation() {
                           </li>
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/gift-sets"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Gift Sets
@@ -108,7 +108,7 @@ export function Navigation() {
                         <ul className="space-y-2">
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/floral"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Floral
@@ -116,7 +116,7 @@ export function Navigation() {
                           </li>
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/herbal"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Herbal
@@ -124,7 +124,7 @@ export function Navigation() {
                           </li>
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/luxury"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Luxury
@@ -137,7 +137,7 @@ export function Navigation() {
                         <ul className="space-y-2">
                           <li>
                             <Link
-                              href="#"
+                              href="/shop/sale"
                               className="text-sm text-[#4B5563] hover:text-[#C084FC] transition-colors duration-200"
                             >
                               Up to 50% Off
@@ -201,19 +201,19 @@ export function Navigation() {
                   }`}
                 >
                   <Link
-                    href="#"
+                    href="/about/our-story"
                     className="block px-4 py-3 text-sm text-[#1F2937] hover:bg-[#F9FAFB] hover:text-[#C084FC] transition-all duration-200 border-b border-[#E5E7EB]"
                   >
                     Our Story
                   </Link>
                   <Link
-                    href="#"
+                    href="/about/sustainability"
                     className="block px-4 py-3 text-sm text-[#1F2937] hover:bg-[#F9FAFB] hover:text-[#C084FC] transition-all duration-200 border-b border-[#E5E7EB]"
                   >
                     Sustainability
                   </Link>
                   <Link
-                    href="#"
+                    href="/about/contact"
                     className="block px-4 py-3 text-sm text-[#1F2937] hover:bg-[#F9FAFB] hover:text-[#C084FC] transition-all duration-200"
                   >
                     Contact

@@ -6,8 +6,6 @@
     "esModuleInterop": true, // Enable interoperability between CommonJS and ES Modules
     "skipLibCheck": true, // Skip type checking of declaration files
     "outDir": "./dist", // Redirect output structure to the 'dist' folder
-    "rootDir": "./src" // Specify the root folder for input files
-    ,
     "lib": [
       "dom",
       "dom.iterable",
