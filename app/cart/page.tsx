@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/src/context/CartContext";
-import { Navigation } from "../components/Navigation";
+import { Navigation } from "@/src/components/Navigation";
 import Link from "next/link";
 
 export default function CartPage() {
@@ -71,7 +71,7 @@ export default function CartPage() {
                     </div>
 
                     {/* Total Price */}
-                    <div className="text-right min-w-[120px]">
+                    <div className="text-right min-w-30">
                       <p className="text-sm text-[#4B5563]">Subtotal</p>
                       <p className="text-2xl font-bold text-[#1F2937]">
                         ${(item.price * item.quantity).toFixed(2)}

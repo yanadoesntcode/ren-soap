@@ -1,9 +1,11 @@
 import "./globals.css";
-import { Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import { CartProvider } from "@/src/context/CartContext";
 
-const outfit = Outfit({
-  subsets: ['latin'],
+const outfit = localFont({
+  src: '../font/Outfit-VariableFont_wght.ttf',
+  variable: '--font-outfit',
+  display: 'swap',
 })
  
 export default function RootLayout({
