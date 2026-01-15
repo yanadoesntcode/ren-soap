@@ -2,15 +2,18 @@ import React from "react";
 import { connectToDatabase } from "@/src/lib/mongodb";
 import { Navigation } from "@/src/components/Navigation";
 import { ProductCard } from "@/src/components/ProductCard";
+import WinterCollectionCarousel from "@/src/components/WinterCollectionCarousel";
 
 export default async function Home() {
   let products: any[] = [];
+  let winterProducts: any[] = [];
 
   try {
     const { db } = await connectToDatabase();
     const result = await db
       .collection("products")
       .find({})
+      .limit(4)
       .toArray();
     
     console.log("✅ Fetched products from database:", result.length);
@@ -21,6 +24,25 @@ export default async function Home() {
       description: p.description,
       price: p.price,
     }));
+
+    // Fetch winter collection items (Herbal + some Luxury soaps)
+    const winterResult = await db
+      .collection("products")
+      .find({ 
+        category: { $in: ["Herbal", "Luxury"] }
+      })
+      .limit(6)
+      .toArray();
+
+    winterProducts = winterResult.map((p: any) => ({
+      id: p._id.toString(),
+      name: p.name,
+      description: p.description,
+      price: p.price,
+      category: p.category,
+    }));
+
+    console.log("✅ Fetched winter products:", winterProducts.length);
   } catch (error) {
     console.error("❌ Failed to fetch products:", error);
   }
@@ -119,48 +141,16 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Promotion Banner */}
+        {/* Promotion Banner - Winter Collection with Carousel */}
         <section className="w-full px-8 py-16 bg-linear-to-r from-[#C084FC] to-[#A855F7]">
-          <div className="max-w-7xl mx-auto text-center text-white">
-            <h2 className="text-4xl font-bold mb-4">Winter Collection</h2>
-            <p className="text-xl mb-8">
-              Warm, soothing scents perfect for cozy nights
-            </p>
-            <button className="rounded-full bg-[#FCD34D] hover:bg-[#FBD97A] px-8 py-4 text-[#1F2937] font-bold transition">
-              Shop Winter Soaps
-            </button>
-          </div>
-        </section>
-
-        {/* Featured Categories */}
-        <section className="w-full px-8 py-16 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#1F2937] mb-12 text-center">
-              Shop by Category
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-linear-to-br from-[#FED7AA] to-[#FCA5A5] p-8 rounded-lg text-center text-white hover:shadow-lg transition">
-                <h3 className="text-2xl font-bold mb-2">Floral Soaps</h3>
-                <p className="mb-4">Delicate and aromatic</p>
-                <button className="bg-white text-[#1F2937] px-6 py-2 rounded-full font-bold hover:bg-[#FDFDFD] transition">
-                  Explore
-                </button>
-              </div>
-              <div className="bg-linear-to-br from-[#A7F3D0] to-[#6EE7B7] p-8 rounded-lg text-center text-white hover:shadow-lg transition">
-                <h3 className="text-2xl font-bold mb-2">Herbal Soaps</h3>
-                <p className="mb-4">Energizing and refreshing</p>
-                <button className="bg-white text-[#1F2937] px-6 py-2 rounded-full font-bold hover:bg-[#FDFDFD] transition">
-                  Explore
-                </button>
-              </div>
-              <div className="bg-linear-to-br from-[#BFDBFE] to-[#93C5FD] p-8 rounded-lg text-center text-white hover:shadow-lg transition">
-                <h3 className="text-2xl font-bold mb-2">Luxury Sets</h3>
-                <p className="mb-4">Perfect gift sets</p>
-                <button className="bg-white text-[#1F2937] px-6 py-2 rounded-full font-bold hover:bg-[#FDFDFD] transition">
-                  Explore
-                </button>
-              </div>
+            <div className="text-center text-white mb-8">
+              <h2 className="text-4xl font-bold mb-4">Winter Collection</h2>
+              <p className="text-xl mb-4">
+                Warm, soothing scents perfect for cozy nights
+              </p>
             </div>
+            <WinterCollectionCarousel products={winterProducts} />
           </div>
         </section>
 

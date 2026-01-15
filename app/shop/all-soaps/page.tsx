@@ -1,7 +1,7 @@
 import React from "react";
 import { connectToDatabase } from "@/src/lib/mongodb";
 import { Navigation } from "@/src/components/Navigation";
-import { ProductCard } from "@/src/components/ProductCard";
+import AllSoapsClient from "./AllSoapsClient";
 
 export default async function AllSoapsPage() {
   let products: any[] = [];
@@ -31,26 +31,7 @@ export default async function AllSoapsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#FDFDFD]">
       <Navigation />
-
-      <main className="w-full flex-1 py-12">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-[#1F2937] mb-4">
-              All Soaps
-            </h1>
-            <p className="text-lg text-[#4B5563]">
-              Explore our complete collection of handcrafted artisan soaps
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
-          </div>
-        </div>
-      </main>
-
+      <AllSoapsClient products={products} />
       <footer className="w-full bg-[#1F2937] text-[#FDFDFD] py-12 mt-16">
         <div className="max-w-7xl mx-auto px-8 text-center">
           <p className="text-sm">© 2026 Soap Haven. All rights reserved.</p>
