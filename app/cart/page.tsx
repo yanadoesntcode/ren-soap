@@ -37,7 +37,12 @@ export default function CartPage() {
                   >
                     <div className="flex-1">
                       <h3 className="text-xl font-medium text-[#1F2937]">
-                        {item.name}
+                        <Link
+                          href={`/product/${item.id}`}
+                          className="hover:text-[#C084FC] transition-colors"
+                        >
+                          {item.name}
+                        </Link>
                       </h3>
                       <p className="text-[#4B5563] text-sm mt-1">
                         {item.description}
