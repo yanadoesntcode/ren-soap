@@ -32,7 +32,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FDFDFD]">
+    <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
       <Navigation />
 
       <main className="w-full flex-1 py-12">

@@ -18,7 +18,8 @@ interface AllSoapsClientProps {
 
 export default function AllSoapsClient({ products }: AllSoapsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [priceRange, setPriceRange] = useState<string>("All");
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(100);
   const [sortBy, setSortBy] = useState<string>("newest");
   const [showFilters, setShowFilters] = useState(false);
 
@@ -26,6 +27,16 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
   const categories = useMemo(() => {
     const cats = ["All", ...new Set(products.map((p) => p.category))];
     return cats;
+  }, [products]);
+
+  // Get min and max prices from products
+  const { minProductPrice, maxProductPrice } = useMemo(() => {
+    if (products.length === 0) return { minProductPrice: 0, maxProductPrice: 100 };
+    const prices = products.map((p) => p.price);
+    return {
+      minProductPrice: Math.floor(Math.min(...prices)),
+      maxProductPrice: Math.ceil(Math.max(...prices)),
+    };
   }, [products]);
 
   // Filter and sort products
@@ -38,17 +49,7 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
     }
 
     // Filter by price range
-    if (priceRange !== "All") {
-      if (priceRange === "under10") {
-        filtered = filtered.filter((p) => p.price < 10);
-      } else if (priceRange === "10to20") {
-        filtered = filtered.filter((p) => p.price >= 10 && p.price < 20);
-      } else if (priceRange === "20to30") {
-        filtered = filtered.filter((p) => p.price >= 20 && p.price < 30);
-      } else if (priceRange === "over30") {
-        filtered = filtered.filter((p) => p.price >= 30);
-      }
-    }
+    filtered = filtered.filter((p) => p.price >= minPrice && p.price <= maxPrice);
 
     // Sort products
     if (sortBy === "priceLowHigh") {
@@ -60,10 +61,9 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
     } else if (sortBy === "nameZA") {
       filtered.sort((a, b) => b.name.localeCompare(a.name));
     }
-    // Default is "newest" which maintains the original order
 
     return filtered;
-  }, [products, selectedCategory, priceRange, sortBy]);
+  }, [products, selectedCategory, minPrice, maxPrice, sortBy]);
 
   return (
     <main className="w-full flex-1 py-12">
@@ -120,26 +120,91 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
                 </select>
               </div>
 
-              {/* Price Range Filter */}
+              {/* Price Range Slider */}
               <div>
-                <label
-                  htmlFor="priceRange"
-                  className="block text-sm font-medium text-[#1F2937] mb-2"
-                >
-                  Price Range
+                <label className="block text-sm font-medium text-[#1F2937] mb-4">
+                  Price Range: ${minPrice} - ${maxPrice}
                 </label>
-                <select
-                  id="priceRange"
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(e.target.value)}
-                  className="w-full px-4 py-2 border border-[#E5E7EB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C084FC]"
-                >
-                  <option value="All">All Prices</option>
-                  <option value="under10">Under $10</option>
-                  <option value="10to20">$10 - $20</option>
-                  <option value="20to30">$20 - $30</option>
-                  <option value="over30">Over $30</option>
-                </select>
+                <div className="space-y-4">
+                  {/* Min Price Slider */}
+                  <div>
+                    <label htmlFor="minPrice" className="text-xs text-[#4B5563] block mb-2">
+                      Min: ${minPrice}
+                    </label>
+                    <input
+                      id="minPrice"
+                      type="range"
+                      min={minProductPrice}
+                      max={maxProductPrice}
+                      value={minPrice}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value <= maxPrice) {
+                          setMinPrice(value);
+                        }
+                      }}
+                      className="w-full h-2 bg-[#E5E7EB] rounded-lg appearance-none cursor-pointer accent-[#C084FC]"
+                    />
+                  </div>
+                  
+                  {/* Max Price Slider */}
+                  <div>
+                    <label htmlFor="maxPrice" className="text-xs text-[#4B5563] block mb-2">
+                      Max: ${maxPrice}
+                    </label>
+                    <input
+                      id="maxPrice"
+                      type="range"
+                      min={minProductPrice}
+                      max={maxProductPrice}
+                      value={maxPrice}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value >= minPrice) {
+                          setMaxPrice(value);
+                        }
+                      }}
+                      className="w-full h-2 bg-[#E5E7EB] rounded-lg appearance-none cursor-pointer accent-[#C084FC]"
+                    />
+                  </div>
+
+                  {/* Price Input Fields */}
+                  <div className="flex gap-2 mt-4">
+                    <div className="flex-1">
+                      <input
+                        type="number"
+                        value={minPrice}
+                        onChange={(e) => {
+                          const value = Number(e.target.value);
+                          if (value <= maxPrice) {
+                            setMinPrice(Math.max(value, minProductPrice));
+                          }
+                        }}
+                        min={minProductPrice}
+                        max={maxProductPrice}
+                        className="w-full px-3 py-2 border border-[#E5E7EB] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C084FC]"
+                        placeholder="Min"
+                      />
+                    </div>
+                    <div className="flex items-center text-[#4B5563] font-medium">-</div>
+                    <div className="flex-1">
+                      <input
+                        type="number"
+                        value={maxPrice}
+                        onChange={(e) => {
+                          const value = Number(e.target.value);
+                          if (value >= minPrice) {
+                            setMaxPrice(Math.min(value, maxProductPrice));
+                          }
+                        }}
+                        min={minProductPrice}
+                        max={maxProductPrice}
+                        className="w-full px-3 py-2 border border-[#E5E7EB] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C084FC]"
+                        placeholder="Max"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Sort By */}
@@ -169,7 +234,8 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
                 <button
                   onClick={() => {
                     setSelectedCategory("All");
-                    setPriceRange("All");
+                    setMinPrice(minProductPrice);
+                    setMaxPrice(maxProductPrice);
                     setSortBy("newest");
                   }}
                   className="w-full px-4 py-2 border-2 border-[#C084FC] text-[#C084FC] rounded-lg font-medium hover:bg-[#C084FC] hover:text-white transition-colors duration-300"
@@ -182,7 +248,7 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
         </div>
 
         {/* Active Filters Display */}
-        {(selectedCategory !== "All" || priceRange !== "All") && (
+        {(selectedCategory !== "All" || minPrice !== minProductPrice || maxPrice !== maxProductPrice) && (
           <div className="flex flex-wrap gap-2 mb-6">
             <span className="text-sm text-[#4B5563]">Active filters:</span>
             {selectedCategory !== "All" && (
@@ -196,14 +262,14 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
                 </button>
               </span>
             )}
-            {priceRange !== "All" && (
+            {(minPrice !== minProductPrice || maxPrice !== maxProductPrice) && (
               <span className="inline-flex items-center gap-2 bg-[#C084FC] text-white px-3 py-1 rounded-full text-sm">
-                {priceRange === "under10" && "Under $10"}
-                {priceRange === "10to20" && "$10-$20"}
-                {priceRange === "20to30" && "$20-$30"}
-                {priceRange === "over30" && "Over $30"}
+                ${minPrice} - ${maxPrice}
                 <button
-                  onClick={() => setPriceRange("All")}
+                  onClick={() => {
+                    setMinPrice(minProductPrice);
+                    setMaxPrice(maxProductPrice);
+                  }}
                   className="hover:text-[#E5E7EB]"
                 >
                   ×
@@ -228,7 +294,8 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
             <button
               onClick={() => {
                 setSelectedCategory("All");
-                setPriceRange("All");
+                setMinPrice(minProductPrice);
+                setMaxPrice(maxProductPrice);
               }}
               className="bg-[#C084FC] text-white px-6 py-3 rounded-full font-medium hover:bg-[#A855F7] transition-colors duration-300"
             >

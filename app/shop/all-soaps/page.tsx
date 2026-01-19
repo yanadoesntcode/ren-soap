@@ -29,7 +29,7 @@ export default async function AllSoapsPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FDFDFD]">
+    <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
       <Navigation />
       <AllSoapsClient products={products} />
       <footer className="w-full bg-[#1F2937] text-[#FDFDFD] py-12 mt-16">

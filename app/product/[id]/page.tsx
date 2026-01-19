@@ -59,7 +59,7 @@ export default async function ProductDetail({
 
   if (!product) {
     return (
-      <div className="flex min-h-screen flex-col bg-[#FDFDFD]">
+      <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
         <Navigation />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
@@ -87,7 +87,7 @@ export default async function ProductDetail({
       : "0";
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FDFDFD]">
+    <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
       <Navigation />
 
       <main className="w-full flex-1 py-12">

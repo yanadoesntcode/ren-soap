@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={outfit.className}>
-      <body>
+      <body className="overflow-x-hidden">
         <CartProvider>
           {children}
         </CartProvider>

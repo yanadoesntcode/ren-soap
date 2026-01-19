@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Product {
   id: string;
@@ -9,6 +10,7 @@ interface Product {
   description: string;
   price: number;
   category: string;
+  image?: string;
 }
 
 interface WinterCollectionCarouselProps {
@@ -66,11 +68,21 @@ export default function WinterCollectionCarousel({
       {/* Main Carousel Display */}
       <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 mb-6">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          {/* Product Image/Icon */}
-          <div className="shrink-0">
-            <div className="w-32 h-32 md:w-40 md:h-40 bg-white/20 rounded-full flex items-center justify-center text-7xl md:text-8xl">
-              {currentProduct.category === "Herbal" ? "🌿" : "✨"}
-            </div>
+          {/* Product Image */}
+          <div className="shrink-0 relative w-40 h-40 md:w-48 md:h-48">
+            {currentProduct.image ? (
+              <Image
+                src={currentProduct.image}
+                alt={currentProduct.name}
+                fill
+                className="object-cover rounded-2xl shadow-lg"
+                priority
+              />
+            ) : (
+              <div className="w-full h-full bg-white/20 rounded-2xl flex items-center justify-center text-7xl md:text-8xl">
+                {currentProduct.category === "Herbal" ? "🌿" : "✨"}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
@@ -164,16 +176,27 @@ export default function WinterCollectionCarousel({
           <button
             key={product.id}
             onClick={() => goToSlide(index)}
-            className={`bg-white/10 hover:bg-white/20 rounded-lg p-3 transition-all duration-300 ${
+            className={`bg-white/10 hover:bg-white/20 rounded-lg p-2 transition-all duration-300 overflow-hidden ${
               index === currentIndex
                 ? "ring-2 ring-[#FCD34D] bg-white/20"
                 : ""
             }`}
           >
-            <div className="text-3xl mb-1">
-              {product.category === "Herbal" ? "🌿" : "✨"}
-            </div>
-            <p className="text-white text-xs font-medium truncate">
+            {product.image ? (
+              <div className="relative w-full h-16">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover rounded"
+                />
+              </div>
+            ) : (
+              <div className="text-2xl text-center">
+                {product.category === "Herbal" ? "🌿" : "✨"}
+              </div>
+            )}
+            <p className="text-white text-xs font-medium truncate mt-1">
               {product.name}
             </p>
           </button>

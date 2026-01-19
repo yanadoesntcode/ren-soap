@@ -29,7 +29,8 @@ export default async function Home() {
     const winterResult = await db
       .collection("products")
       .find({ 
-        category: { $in: ["Herbal", "Luxury"] }
+        category: { $in: ["Herbal", "Luxury"] },
+        name: { $ne: "Silk & Shea Butter Soap" }
       })
       .limit(6)
       .toArray();
@@ -40,6 +41,7 @@ export default async function Home() {
       description: p.description,
       price: p.price,
       category: p.category,
+      image: p.image || `/soaps/${p.name.toLowerCase().replace(/\s+/g, '-')}.jpg`,
     }));
 
     console.log("✅ Fetched winter products:", winterProducts.length);
@@ -47,7 +49,7 @@ export default async function Home() {
     console.error("❌ Failed to fetch products:", error);
   }
   return (
-    <div className="flex min-h-screen flex-col bg-[#FDFDFD] font-sans">
+    <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
       <Navigation />
 
       {/* Top Banners */}
@@ -57,7 +59,7 @@ export default async function Home() {
 
       {/* Hero Section */}
       <header 
-        className="relative w-full text-center py-20 min-h-[500px] flex items-center justify-center"
+        className="relative w-full text-center py-20 min-h-125 flex items-center justify-center"
         style={{
           backgroundImage: 'url(/images/landing-image.jpg)',
           backgroundSize: 'cover',

@@ -9,7 +9,7 @@ export default function CartPage() {
   const totalPrice = getTotalPrice();
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FDFDFD] font-sans">
+    <div className="flex min-h-screen flex-col bg-[#FDFDFD] font-sans overflow-x-hidden">
       <Navigation />
 
       <main className="w-full max-w-5xl mx-auto px-8 py-16">
@@ -19,7 +19,7 @@ export default function CartPage() {
           <div className="text-center py-12">
             <p className="text-lg text-[#4B5563] mb-4">Your cart is empty</p>
             <Link
-              href="/"
+              href="/shop/all-soaps"
               className="inline-block rounded-full bg-[#1F2937] px-6 py-3 text-[#FDFDFD] hover:bg-[#111827] transition"
             >
               Continue Shopping
@@ -48,18 +48,25 @@ export default function CartPage() {
                     </div>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center gap-4 mx-6">
+                    <div className="flex items-center gap-3 mx-6">
                       <button
                         onClick={() =>
-                          updateQuantity(item.id, item.quantity - 1)
+                          updateQuantity(item.id, Math.max(1, item.quantity - 1))
                         }
                         className="bg-[#E5E7EB] hover:bg-[#D1D5DB] px-3 py-1 rounded text-[#1F2937] font-bold"
                       >
                         −
                       </button>
-                      <span className="w-8 text-center font-bold text-[#1F2937]">
-                        {item.quantity}
-                      </span>
+                      <input
+                        type="number"
+                        min="1"
+                        value={item.quantity}
+                        onChange={(e) => {
+                          const newQuantity = parseInt(e.target.value) || 1;
+                          updateQuantity(item.id, Math.max(1, newQuantity));
+                        }}
+                        className="w-12 text-center font-bold text-[#1F2937] border border-[#D1D5DB] rounded px-2 py-1"
+                      />
                       <button
                         onClick={() =>
                           updateQuantity(item.id, item.quantity + 1)
@@ -128,7 +135,7 @@ export default function CartPage() {
                 </button>
 
                 <Link
-                  href="/"
+                  href="/shop/all-soaps"
                   className="block text-center text-[#1F2937] hover:text-[#FCD34D] font-semibold"
                 >
                   Continue Shopping

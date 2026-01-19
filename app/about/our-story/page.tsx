@@ -82,7 +82,7 @@ export default function OurStoryPage() {
                 
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#C084FC]/20">
                         <span className="text-[#C084FC] font-bold">1</span>
                       </div>
@@ -94,7 +94,7 @@ export default function OurStoryPage() {
                   </div>
                   
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#C084FC]/20">
                         <span className="text-[#C084FC] font-bold">2</span>
                       </div>
@@ -106,7 +106,7 @@ export default function OurStoryPage() {
                   </div>
                   
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#C084FC]/20">
                         <span className="text-[#C084FC] font-bold">3</span>
                       </div>
@@ -118,7 +118,7 @@ export default function OurStoryPage() {
                   </div>
                   
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#C084FC]/20">
                         <span className="text-[#C084FC] font-bold">4</span>
                       </div>
@@ -168,7 +168,7 @@ export default function OurStoryPage() {
 
 
           {/* CTA Section */}
-          <section className="bg-gradient-to-r from-[#C084FC]/10 to-[#A855F7]/10 rounded-2xl p-12 text-center mb-20">
+          <section className="bg-linear-to-r from-[#C084FC]/10 to-[#A855F7]/10 rounded-2xl p-12 text-center mb-20">
             <h2 className="text-3xl font-bold text-[#1F2937] mb-4">
               Ready to Experience the Difference?
             </h2>
