@@ -14,7 +14,7 @@ export default async function SalePage() {
       .limit(8)
       .toArray();
 
-    products = result.map((product) => ({
+    products = result.map((product: any) => ({
       id: product._id.toString(),
       name: product.name,
       description: product.description,

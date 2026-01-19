@@ -30,6 +30,10 @@ export default async function AllSoapsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#FDFDFD] overflow-x-hidden">
+            {/* Top Banners */}
+      <div className="w-full bg-linear-to-r from-[#C084FC] via-[#A855F7] to-[#C084FC] text-white text-center py-3 text-sm font-medium tracking-wide">
+        <p>✨ Free Shipping on orders over $50 • Easy 30-Day Returns ✨</p>
+      </div>
       <Navigation />
       <AllSoapsClient products={products} />
       <footer className="w-full bg-[#1F2937] text-[#FDFDFD] py-12 mt-16">

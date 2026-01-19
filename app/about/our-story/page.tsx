@@ -18,10 +18,16 @@ export default function OurStoryPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <h1 className="text-6xl font-bold text-white text-center px-4">
-              Handcrafted With Care
-            </h1>
+          <div className="absolute inset-0 bg-linear-to-b from-[#1F2937]/70 via-[#2D1B4E]/60 to-[#1F2937]/70 flex items-center justify-center">
+            <div className="text-center">
+              <div className="inline-block mb-4 px-6 py-2 bg-[#C084FC]/20 backdrop-blur-sm border border-[#C084FC]/40 rounded-full">
+                <span className="text-[#FCD34D] font-semibold text-sm tracking-wider">OUR JOURNEY</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold text-white px-4">
+                Handcrafted With Care
+              </h1>
+              <div className="w-24 h-1 bg-linear-to-r from-[#C084FC] to-[#FCD34D] mx-auto rounded-full mt-6"></div>
+            </div>
           </div>
         </div>
 
@@ -30,9 +36,13 @@ export default function OurStoryPage() {
           <section className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-[#1F2937] mb-6">
+                <div className="inline-block mb-3">
+                  <span className="text-sm font-semibold text-[#C084FC] tracking-wider uppercase">The Beginning</span>
+                </div>
+                <h2 className="text-4xl font-bold text-[#1F2937] mb-4">
                   Where It All Began
                 </h2>
+                <div className="w-16 h-1 bg-linear-to-r from-[#C084FC] to-[#A855F7] rounded-full mb-6"></div>
                 <p className="text-[#4B5563] text-lg leading-relaxed mb-4">
                   Soap Haven started in a small kitchen with a simple belief: 
                   everyone deserves natural, beautiful soap that feels like a luxury 
@@ -71,9 +81,13 @@ export default function OurStoryPage() {
                 />
               </div>
               <div className="order-1 md:order-2">
-                <h2 className="text-4xl font-bold text-[#1F2937] mb-6">
+                <div className="inline-block mb-3">
+                  <span className="text-sm font-semibold text-[#C084FC] tracking-wider uppercase">Our Craft</span>
+                </div>
+                <h2 className="text-4xl font-bold text-[#1F2937] mb-4">
                   The Soap-Making Craft
                 </h2>
+                <div className="w-16 h-1 bg-linear-to-r from-[#C084FC] to-[#A855F7] rounded-full mb-6"></div>
                 <p className="text-[#4B5563] text-lg leading-relaxed mb-6">
                   We use the cold process method, an ancient technique that preserves 
                   the natural glycerin in our soaps. This takes longer than commercial 
@@ -135,29 +149,41 @@ export default function OurStoryPage() {
 
           {/* Values Section */}
           <section className="mb-20">
-            <h2 className="text-4xl font-bold text-[#1F2937] mb-12 text-center">
-              What Matters to Us
-            </h2>
+            <div className="text-center mb-12">
+              <div className="inline-block mb-3">
+                <span className="text-sm font-semibold text-[#C084FC] tracking-wider uppercase">Our Values</span>
+              </div>
+              <h2 className="text-4xl font-bold text-[#1F2937] mb-4">
+                What Matters to Us
+              </h2>
+              <div className="w-16 h-1 bg-linear-to-r from-[#C084FC] to-[#A855F7] mx-auto rounded-full"></div>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-[#FDFDFD] p-8 rounded-xl border border-[#E5E7EB]">
-                <div className="mb-4 text-4xl">🌿</div>
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
+                  <span className="text-3xl">🌿</span>
+                </div>
                 <h3 className="font-bold text-[#1F2937] mb-3 text-lg">Clean Ingredients</h3>
                 <p className="text-[#4B5563]">
                   No parabens, sulfates, or synthetic fragrances. Just real plants, real oils, and real care.
                 </p>
               </div>
               
-              <div className="bg-[#FDFDFD] p-8 rounded-xl border border-[#E5E7EB]">
-                <div className="mb-4 text-4xl">🌍</div>
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
+                  <span className="text-3xl">🌍</span>
+                </div>
                 <h3 className="font-bold text-[#1F2937] mb-3 text-lg">Planet First</h3>
                 <p className="text-[#4B5563]">
                   Recyclable packaging, sustainable sourcing, and a commitment to leaving things better than we found them.
                 </p>
               </div>
               
-              <div className="bg-[#FDFDFD] p-8 rounded-xl border border-[#E5E7EB]">
-                <div className="mb-4 text-4xl">🤝</div>
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
+                  <span className="text-3xl">🤝</span>
+                </div>
                 <h3 className="font-bold text-[#1F2937] mb-3 text-lg">Community</h3>
                 <p className="text-[#4B5563]">
                   We're building something together. Your feedback, your loyalty, and your trust mean everything.
@@ -168,20 +194,30 @@ export default function OurStoryPage() {
 
 
           {/* CTA Section */}
-          <section className="bg-linear-to-r from-[#C084FC]/10 to-[#A855F7]/10 rounded-2xl p-12 text-center mb-20">
-            <h2 className="text-3xl font-bold text-[#1F2937] mb-4">
-              Ready to Experience the Difference?
-            </h2>
-            <p className="text-[#4B5563] text-lg mb-8 max-w-2xl mx-auto">
-              Each bar is made with intention, crafted with care, and designed to bring 
-              a moment of calm to your day.
-            </p>
-            <Link
-              href="/shop/all-soaps"
-              className="inline-block bg-[#C084FC] text-white px-10 py-4 rounded-full font-semibold hover:bg-[#A855F7] transition-colors duration-300 shadow-md hover:shadow-lg"
-            >
-              Shop Our Collection
-            </Link>
+          <section className="relative bg-linear-to-br from-[#1F2937] via-[#2D1B4E] to-[#1F2937] rounded-2xl p-12 text-center mb-20 overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#C084FC]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#A855F7]/10 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-block mb-4 px-6 py-2 bg-[#C084FC]/20 backdrop-blur-sm border border-[#C084FC]/40 rounded-full">
+                <span className="text-[#FCD34D] font-semibold text-sm tracking-wider">START YOUR JOURNEY</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to Experience the Difference?
+              </h2>
+              <div className="w-24 h-1 bg-linear-to-r from-[#C084FC] to-[#FCD34D] mx-auto rounded-full mb-6"></div>
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                Each bar is made with intention, crafted with care, and designed to bring 
+                a moment of calm to your day.
+              </p>
+              <Link
+                href="/shop/all-soaps"
+                className="inline-block bg-linear-to-r from-[#C084FC] to-[#A855F7] text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                Shop Our Collection
+              </Link>
+            </div>
           </section>
         </div>
       </main>
