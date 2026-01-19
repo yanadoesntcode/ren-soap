@@ -68,7 +68,7 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
   return (
     <main className="w-full flex-1 py-12">
       <div className="max-w-7xl mx-auto px-8">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
           <h1 className="text-5xl font-bold text-[#1F2937] mb-4">All Soaps</h1>
           <p className="text-lg text-[#4B5563]">
             Explore our complete collection of handcrafted artisan soaps
@@ -76,7 +76,7 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
         </div>
 
         {/* Filters Bar */}
-        <div className="bg-white rounded-lg border border-[#E5E7EB] p-6 mb-8">
+        <div className="bg-white rounded-lg border border-[#E5E7EB] p-6 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
           <div className="flex items-center justify-between mb-4 lg:mb-0">
             <div className="flex items-center gap-2">
               <span className="text-[#1F2937] font-medium">
@@ -283,7 +283,9 @@ export default function AllSoapsClient({ products }: AllSoapsClientProps) {
         {filteredAndSortedProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredAndSortedProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+              <div key={product.id} className="animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 100 + 300}ms` }}>
+                <ProductCard product={product} index={index} />
+              </div>
             ))}
           </div>
         ) : (

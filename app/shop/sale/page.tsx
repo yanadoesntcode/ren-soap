@@ -35,7 +35,7 @@ export default async function SalePage() {
       <main className="w-full flex-1 py-12">
         <div className="max-w-7xl mx-auto px-8">
           {/* Sale Banner */}
-          <div className="bg-linear-to-r from-[#C084FC] to-[#A855F7] text-white rounded-2xl p-12 text-center mb-12">
+          <div className="bg-linear-to-r from-[#C084FC] to-[#A855F7] text-white rounded-2xl p-12 text-center mb-12 animate-in fade-in zoom-in-95 duration-700">
             <h1 className="text-6xl font-bold mb-4">
               Up to 50% Off
             </h1>
@@ -44,7 +44,7 @@ export default async function SalePage() {
             </p>
           </div>
 
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
             <p className="text-lg text-[#4B5563]">
               Don't miss out on these amazing deals
             </p>
@@ -52,7 +52,7 @@ export default async function SalePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product, index) => (
-              <div key={product.id} className="relative">
+              <div key={product.id} className="relative animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 100 + 300}ms` }}>
                 <div className="absolute -top-2 -right-2 z-10 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                   SALE
                 </div>

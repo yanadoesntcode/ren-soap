@@ -70,7 +70,7 @@ export default function OurStoryPage() {
           </section>
 
           {/* Our Process Section */}
-          <section className="mb-20">
+          <section className="mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-md order-2 md:order-1">
                 <Image
@@ -149,7 +149,7 @@ export default function OurStoryPage() {
 
           {/* Values Section */}
           <section className="mb-20">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
               <div className="inline-block mb-3">
                 <span className="text-sm font-semibold text-[#C084FC] tracking-wider uppercase">Our Values</span>
               </div>
@@ -160,7 +160,7 @@ export default function OurStoryPage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-450">
                 <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
                   <span className="text-3xl">🌿</span>
                 </div>
@@ -170,7 +170,7 @@ export default function OurStoryPage() {
                 </p>
               </div>
               
-              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-600">
                 <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
                   <span className="text-3xl">🌍</span>
                 </div>
@@ -180,7 +180,7 @@ export default function OurStoryPage() {
                 </p>
               </div>
               
-              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg">
+              <div className="bg-linear-to-br from-white to-[#C084FC]/5 p-8 rounded-xl border-2 border-[#E5E7EB] hover:border-[#C084FC] transition-all duration-300 hover:shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-750">
                 <div className="mb-4 inline-flex items-center justify-center w-14 h-14 bg-linear-to-br from-[#C084FC]/20 to-[#A855F7]/10 rounded-full">
                   <span className="text-3xl">🤝</span>
                 </div>

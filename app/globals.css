@@ -3,6 +3,12 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
+  
+  /* Animation keyframes */
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-slide-up: slide-up 0.7s ease-out forwards;
+  --animate-slide-down: slide-down 0.7s ease-out forwards;
+  --animate-zoom-in: zoom-in 0.5s ease-out forwards;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -10,6 +16,125 @@
     --color-background: #0a0a0a;
     --color-foreground: #ededed;
   }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll reveal base */
+.scroll-reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.scroll-revealed {
+  opacity: 1 !important;
+}
+
+/* Fade in animation */
+.scroll-reveal.animate-fade-in {
+  transition: opacity 0.8s ease-out;
+}
+
+.scroll-reveal.animate-fade-in.scroll-revealed {
+  opacity: 1;
+}
+
+/* Slide up animation */
+.scroll-reveal.animate-slide-up {
+  transform: translateY(3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.animate-slide-up.scroll-revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Slide down animation */
+.scroll-reveal.animate-slide-down {
+  transform: translateY(-3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.animate-slide-down.scroll-revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Zoom in animation */
+.scroll-reveal.animate-zoom-in {
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.animate-zoom-in.scroll-revealed {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Delay classes */
+.delay-150 {
+  transition-delay: 150ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+.delay-700 {
+  transition-delay: 700ms;
+}
+
+.delay-750 {
+  transition-delay: 750ms;
+}
+
+.delay-1000 {
+  transition-delay: 1000ms;
 }
 
 body {

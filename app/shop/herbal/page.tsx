@@ -37,18 +37,20 @@ export default async function HerbalPage() {
 
       <main className="w-full flex-1 py-12">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
             <h1 className="text-5xl font-bold text-[#1F2937] mb-4">
               Herbal Collection 🌿
             </h1>
             <p className="text-lg text-[#4B5563]">
-              Refreshing and purifying soaps with natural herbal extracts
+              Pure botanical blends for natural cleansing and rejuvenation
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+              <div key={product.id} className="animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 100 + 150}ms` }}>
+                <ProductCard product={product} index={index} />
+              </div>
             ))}
           </div>
         </div>
