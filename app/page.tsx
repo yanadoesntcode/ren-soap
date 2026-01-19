@@ -56,17 +56,24 @@ export default async function Home() {
       </div>
 
       {/* Hero Section */}
-      <header className="relative w-full bg-linear-to-r from-[#6B8773] to-[#5A7563] text-center py-20">
-        <div className="max-w-5xl mx-auto px-8">
+      <header 
+        className="relative w-full text-center py-20 min-h-[500px] flex items-center justify-center"
+        style={{
+          backgroundImage: 'url(/images/landing-image.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-5xl mx-auto px-8">
           <h1 className="text-5xl md:text-6xl font-bold text-[#FDFDFD] mb-4">
             Luxurious Handmade Soaps
           </h1>
           <p className="text-xl text-[#E5E7EB] mb-8">
             Crafted with natural ingredients for your skin's wellness
           </p>
-          <button className="rounded-full bg-[#FCD34D] hover:bg-[#FBD97A] px-8 py-4 text-[#1F2937] font-bold text-lg transition">
-            Explore Collection
-          </button>
+
         </div>
       </header>
 

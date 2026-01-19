@@ -15,8 +15,8 @@ export async function connectToDatabase() {
   }
 
   const client = new MongoClient(MONGODB_URI, {
-    tls: true,
-    tlsAllowInvalidCertificates: false,
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000,
   });
 
   try {
@@ -26,10 +26,10 @@ export async function connectToDatabase() {
     cachedClient = client;
     cachedDb = db;
 
-    console.log("Connected to MongoDB");
+    console.log("✅ Connected to MongoDB");
     return { client, db };
   } catch (error) {
-    console.error("Failed to connect to MongoDB:", error);
+    console.error("❌ Failed to connect to MongoDB:", error);
     throw error;
   }
 }

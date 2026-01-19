@@ -65,18 +65,7 @@ export default function ContactPage() {
                   <span className="text-2xl">📞</span>
                   <div>
                     <p className="font-medium text-[#1F2937]">Phone</p>
-                    <p className="text-[#4B5563]">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">📍</span>
-                  <div>
-                    <p className="font-medium text-[#1F2937]">Address</p>
-                    <p className="text-[#4B5563]">
-                      123 Soap Street
-                      <br />
-                      San Francisco, CA 94102
-                    </p>
+                    <p className="text-[#4B5563]">+31 (555) 123-4567</p>
                   </div>
                 </div>
               </div>

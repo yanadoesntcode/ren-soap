@@ -1,6 +1,7 @@
 import React from "react";
 import { connectToDatabase } from "@/src/lib/mongodb";
 import { Navigation } from "@/src/components/Navigation";
+import { getProductImage } from "@/src/lib/imageUtils";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
 import Image from "next/image";
@@ -93,8 +94,8 @@ export default async function ProductDetail({
         <div className="max-w-7xl mx-auto px-8">
           {/* Breadcrumb */}
           <nav className="mb-8 text-sm">
-            <Link href="/" className="text-[#4B5563] hover:text-[#C084FC]">
-              Home
+            <Link href="/shop/all-soaps" className="text-[#4B5563] hover:text-[#C084FC]">
+              Soaps
             </Link>
             <span className="mx-2 text-[#4B5563]">/</span>
             <span className="text-[#1F2937] font-medium">{product.name}</span>
@@ -102,13 +103,14 @@ export default async function ProductDetail({
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Product Image */}
-            <div className="relative bg-linear-to-br from-[#F9FAFB] to-[#F3F4F6] rounded-2xl p-12 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-9xl mb-4">🧼</div>
-                <p className="text-[#4B5563] text-sm">
-                  {product.category} Collection
-                </p>
-              </div>
+            <div className="relative bg-linear-to-br from-[#F9FAFB] to-[#F3F4F6] rounded-2xl overflow-hidden">
+              <Image
+                src={(product as any).image || getProductImage(product.name)}
+                alt={product.name}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Product Info */}
